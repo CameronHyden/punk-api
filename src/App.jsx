@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
+import BeerCardContainer from "./components/BeerCardContainer/BeerCardContainer";
+import NavBar from "./components/NavBar/NavBar";
 
-function App() {
+const App = () => {
+  const [users, setUsers] = useState([]);
+
+  const url = "https://api.punkapi.com/v2/beers";
+
+  const getBeer = async () => {
+    const res = await fetch(url);
+    const data = await res.json();
+    setUsers(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    getBeer();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <NavBar />
+      </div>
+      <div className="App">{<BeerCardContainer BeerCards={users} />}</div>
+    </>
   );
-}
+};
 
 export default App;
