@@ -1,22 +1,27 @@
 @use "../../styles/variables" as *;
 
 .beer-card {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  width: 100%;
-  max-width: 300px;
-  border-radius: 3px;
-  padding: 1rem;
+  width: 70%;
   height: 400px;
-  overflow: auto;
+  --card-gradient: #dfe7fd, #f0efeb;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+  background-image: linear-gradient(
+    var(--card-gradient),
+    #f0efeb max(9.5rem, 27vh)
+  );
+  overflow: hidden;
 
   .beer-card__image {
     max-width: 100px;
     border-radius: 3px;
-    background-color: grey;
-    max-height: 200px;
+    height: 15rem;
+    margin-top: 10px;
   }
 
   .beer-card__content {
@@ -25,7 +30,7 @@
     width: 100%;
 
     .beer-card__name {
-      font-size: 1.5rem;
+      font-size: 1rem;
       font-weight: normal;
     }
   }

@@ -1,9 +1,15 @@
 import React from "react";
 
-const NavBar = () => {
+const NavBar = ({ handleSearchInput, searchTerm }) => {
   return (
     <div>
-      <input type="text" />
+      <label htmlFor="searchBar">search for your favorite beer</label>
+      <input
+        className="searchBar"
+        type="text"
+        value={searchTerm}
+        onInput={handleSearchInput}
+      />
     </div>
   );
 };
