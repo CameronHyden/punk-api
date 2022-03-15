@@ -6,9 +6,8 @@ const BeerCard = ({ name, image, abv, description }) => {
       <img className="beer-card__image" src={image} alt={name} />
       <div className="beer-card__content">
         <h2 className="beer-card__name">{name}</h2>
-        <p>{description}</p>
-
         <p>{abv}%</p>
+        <p>{description}</p>
       </div>
     </div>
   );

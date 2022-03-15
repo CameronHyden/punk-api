@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match NavBar component snapshot 1`] = `
+<div>
+  <div>
+    <label
+      for="searchBar"
+    >
+      search for your favorite beer
+    </label>
+    <input
+      class="searchBar"
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

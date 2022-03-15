@@ -9,20 +9,24 @@ const App = () => {
 
   const url = "https://api.punkapi.com/v2/beers";
 
-  const getBeer = async () => {
-    const res = await fetch(url);
-    const data = await res.json();
-    setUsers(data);
-    console.log(data);
+  const getBeer = async (beer) => {
+    if (!beer == " ") {
+      const res = await fetch(url + "?beer_name=" + beer);
+      const data = await res.json();
+      setUsers(data);
+    } else {
+      const res = await fetch(url);
+      const data = await res.json();
+      setUsers(data);
+    }
   };
 
   useEffect(() => {
-    getBeer();
-  }, []);
+    getBeer(searchTerm);
+  }, [searchTerm]);
 
   const handleSearchInput = (event) => {
-    const lowerCaseInput = event.target.value.toLowerCase();
-    setSearchTerm(lowerCaseInput);
+    setSearchTerm(event.target.value);
     console.log(searchTerm);
   };
   return (
