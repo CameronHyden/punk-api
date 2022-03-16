@@ -1,6 +1,6 @@
 import "./BeerCard.scss";
 
-const BeerCard = ({ name, image, abv, description, ph }) => {
+const BeerCard = ({ name, image, abv, ph, description }) => {
   return (
     <div className="beer-card">
       <img className="beer-card__image" src={image} alt={name} />

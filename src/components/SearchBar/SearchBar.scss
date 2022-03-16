@@ -2,9 +2,13 @@
   width: 30%;
   display: flex;
   flex-direction: column;
+
   &__input {
-    border: 2px solid grey;
+    border: 2px solid #dfe7fd;
     margin: 5px;
     padding: 10px;
+
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
 }

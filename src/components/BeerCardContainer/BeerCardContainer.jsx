@@ -12,7 +12,7 @@ const BeerCardContainer = ({ BeerCards }) => {
             image={beer.image_url}
             abv={beer.abv}
             ph={beer.ph}
-            description={beer.description}
+            description={beer.tagline}
           />
         );
       })}

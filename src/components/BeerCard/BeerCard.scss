@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   width: 70%;
-  height: 400px;
+  height: 420px;
   --card-gradient: #dfe7fd, #f0efeb;
   background-color: #fff;
   border-radius: 0.5rem;
@@ -16,6 +16,7 @@
     #f0efeb max(9.5rem, 27vh)
   );
   overflow: hidden;
+  font-family: $font-family;
 
   .beer-card__image {
     max-width: 100px;

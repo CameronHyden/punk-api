@@ -1,3 +1,4 @@
+@use "../../styles/variables" as *;
 .filters__container {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   position: fixed;
@@ -5,11 +6,28 @@
   width: 100%;
   overflow: hidden;
   z-index: 2;
-  height: 130px;
+  height: 200px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  font-family: $font-family;
+  @media screen and (min-width: 500px) {
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 1.3rem;
+  }
+  @media screen and (min-width: 700px) {
+    font-size: 1.4rem;
+  }
 }
 .brewDog-logo {
-  height: 150px;
+  height: 100px;
+  @media screen and (min-width: 500px) {
+    height: 150px;
+  }
 }
