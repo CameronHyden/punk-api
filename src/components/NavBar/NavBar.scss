@@ -1,3 +1,15 @@
-// .filters {
-//   position: fixed;
-// }
+.filters__container {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  position: fixed;
+  background-color: #ffffff;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+  height: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brewDog-logo {
+  height: 150px;
+}

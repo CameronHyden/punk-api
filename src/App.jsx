@@ -49,13 +49,11 @@ const App = () => {
   return (
     <>
       <div className="App">
-        <div>
-          <NavBar
-            handleSearchInput={handleSearchInput}
-            handleAbvCheckbox={handleAbvCheckbox}
-            handleDate={handleDate}
-          />
-        </div>
+        <NavBar
+          handleSearchInput={handleSearchInput}
+          handleAbvCheckbox={handleAbvCheckbox}
+          handleDate={handleDate}
+        />
         <BeerCardContainer BeerCards={users} />
       </div>
     </>

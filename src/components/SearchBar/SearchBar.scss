@@ -1,0 +1,10 @@
+.searchBar {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  &__input {
+    border: 2px solid grey;
+    margin: 5px;
+    padding: 10px;
+  }
+}

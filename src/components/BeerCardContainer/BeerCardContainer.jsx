@@ -10,8 +10,8 @@ const BeerCardContainer = ({ BeerCards }) => {
             key={beer.id}
             name={beer.name}
             image={beer.image_url}
-            tagline={beer.tagline}
             abv={beer.abv}
+            ph={beer.ph}
             description={beer.description}
           />
         );
