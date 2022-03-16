@@ -1,14 +1,15 @@
 import React from "react";
+import CheckboxFilters from "../CheckboxFilters/CheckboxFilters";
+import "./NavBar.scss";
 
-const NavBar = ({ handleSearchInput, searchTerm }) => {
+const NavBar = ({ handleAbvCheckbox, handleSearchInput, handleDate }) => {
   return (
-    <div>
+    <div className="filters">
       <label htmlFor="searchBar">search for your favorite beer</label>
-      <input
-        className="searchBar"
-        type="text"
-        value={searchTerm}
-        onInput={handleSearchInput}
+      <input className="searchBar" type="text" onInput={handleSearchInput} />
+      <CheckboxFilters
+        handleAbvCheckbox={handleAbvCheckbox}
+        handleDate={handleDate}
       />
     </div>
   );

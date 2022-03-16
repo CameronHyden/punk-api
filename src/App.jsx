@@ -6,12 +6,22 @@ import NavBar from "./components/NavBar/NavBar";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [Abv, setAbv] = useState("");
+  const [date, setDate] = useState("");
 
   const url = "https://api.punkapi.com/v2/beers";
 
-  const getBeer = async (beer) => {
+  const getBeer = async (beer, AbvNumber, date) => {
     if (!beer == " ") {
       const res = await fetch(url + "?beer_name=" + beer);
+      const data = await res.json();
+      setUsers(data);
+    } else if (AbvNumber == true) {
+      const res = await fetch(url + "?abv_gt=6");
+      const data = await res.json();
+      setUsers(data);
+    } else if (date == true) {
+      const res = await fetch(url + "?brewed_before=12-2010");
       const data = await res.json();
       setUsers(data);
     } else {
@@ -22,20 +32,28 @@ const App = () => {
   };
 
   useEffect(() => {
-    getBeer(searchTerm);
-  }, [searchTerm]);
+    getBeer(searchTerm, Abv, date);
+  }, [searchTerm, Abv, date]);
 
   const handleSearchInput = (event) => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm);
   };
+
+  const handleAbvCheckbox = (event) => {
+    setAbv(event.target.checked);
+  };
+  const handleDate = (event) => {
+    setDate(event.target.checked);
+  };
+
   return (
     <>
       <div className="App">
         <div>
           <NavBar
             handleSearchInput={handleSearchInput}
-            searchTerm={searchTerm}
+            handleAbvCheckbox={handleAbvCheckbox}
+            handleDate={handleDate}
           />
         </div>
         <BeerCardContainer BeerCards={users} />
