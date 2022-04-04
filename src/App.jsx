@@ -4,36 +4,57 @@ import BeerCardContainer from "./components/BeerCardContainer/BeerCardContainer"
 import NavBar from "./components/NavBar/NavBar";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
+  const [beers, setBeers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [Abv, setAbv] = useState("");
   const [date, setDate] = useState("");
+  const [ph, setPh] = useState("");
 
   const url = "https://api.punkapi.com/v2/beers";
 
-  const getBeer = async (beer, AbvNumber, date) => {
+  const fetchBeers = async (urlParams) => {
+    const res = await fetch(url + urlParams);
+    const data = await res.json();
+    setBeers(data);
+    console.log(data);
+  };
+  console.log(beers);
+
+  const getBeer = (beer, AbvNumber, date) => {
     if (!beer == " ") {
-      const res = await fetch(url + "?beer_name=" + beer);
-      const data = await res.json();
-      setUsers(data);
+      fetchBeers("?beer_name=" + beer);
     } else if (AbvNumber == true) {
-      const res = await fetch(url + "?abv_gt=6");
-      const data = await res.json();
-      setUsers(data);
+      fetchBeers("?abv_gt=6");
     } else if (date == true) {
-      const res = await fetch(url + "?brewed_before=12-2010");
-      const data = await res.json();
-      setUsers(data);
+      fetchBeers("?brewed_before=12-2010");
     } else {
-      const res = await fetch(url);
-      const data = await res.json();
-      setUsers(data);
+      fetchBeers();
     }
   };
 
+  // const getBeer = async (beer, AbvNumber, date) => {
+  //   if (!beer == " ") {
+  //     const res = await fetch(url + "?beer_name=" + beer);
+  //     const data = await res.json();
+  //     setUsers(data);
+  //   } else if (AbvNumber == true) {
+  //     const res = await fetch(url + "?abv_gt=6");
+  //     const data = await res.json();
+  //     setUsers(data);
+  //   } else if (date == true) {
+  //     const res = await fetch(url + "?brewed_before=12-2010");
+  //     const data = await res.json();
+  //     setUsers(data);
+  //   } else {
+  //     const res = await fetch(url);
+  //     const data = await res.json();
+  //     setUsers(data);
+  //   }
+  // };
+
   useEffect(() => {
-    getBeer(searchTerm, Abv, date);
-  }, [searchTerm, Abv, date]);
+    getBeer(searchTerm, Abv, date, ph);
+  }, [searchTerm, Abv, date, ph]);
 
   const handleSearchInput = (event) => {
     setSearchTerm(event.target.value);
@@ -45,6 +66,9 @@ const App = () => {
   const handleDate = (event) => {
     setDate(event.target.checked);
   };
+  const handlePh = (event) => {
+    setPh(event.target.checked);
+  };
 
   return (
     <>
@@ -53,8 +77,9 @@ const App = () => {
           handleSearchInput={handleSearchInput}
           handleAbvCheckbox={handleAbvCheckbox}
           handleDate={handleDate}
+          handlePh={handlePh}
         />
-        <BeerCardContainer BeerCards={users} />
+        <BeerCardContainer BeerCards={beers} ph={ph} />
       </div>
     </>
   );
