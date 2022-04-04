@@ -20,7 +20,7 @@ const App = () => {
   };
   console.log(beers);
 
-  const getBeer = (beer, AbvNumber, date) => {
+  const getBeer = async (beer, AbvNumber, date) => {
     if (!beer == " ") {
       fetchBeers("?beer_name=" + beer);
     } else if (AbvNumber == true) {
@@ -28,29 +28,9 @@ const App = () => {
     } else if (date == true) {
       fetchBeers("?brewed_before=12-2010");
     } else {
-      fetchBeers();
+      fetchBeers(" ");
     }
   };
-
-  // const getBeer = async (beer, AbvNumber, date) => {
-  //   if (!beer == " ") {
-  //     const res = await fetch(url + "?beer_name=" + beer);
-  //     const data = await res.json();
-  //     setUsers(data);
-  //   } else if (AbvNumber == true) {
-  //     const res = await fetch(url + "?abv_gt=6");
-  //     const data = await res.json();
-  //     setUsers(data);
-  //   } else if (date == true) {
-  //     const res = await fetch(url + "?brewed_before=12-2010");
-  //     const data = await res.json();
-  //     setUsers(data);
-  //   } else {
-  //     const res = await fetch(url);
-  //     const data = await res.json();
-  //     setUsers(data);
-  //   }
-  // };
 
   useEffect(() => {
     getBeer(searchTerm, Abv, date, ph);

@@ -3,7 +3,7 @@ import "./BeerCardContainer.scss";
 
 const BeerCardContainer = ({ BeerCards }) => {
   return (
-    <div className="BeerCard-container">
+    <div className="beerCard-container">
       {BeerCards.map((beer) => {
         return (
           <BeerCard
