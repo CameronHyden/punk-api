@@ -16,9 +16,7 @@ const App = () => {
     const res = await fetch(url + urlParams);
     const data = await res.json();
     setBeers(data);
-    console.log(data);
   };
-  console.log(beers);
 
   const getBeer = async (beer, AbvNumber, date) => {
     if (!beer == " ") {
